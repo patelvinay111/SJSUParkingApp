@@ -5,12 +5,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="js/jquery-ui-1.11.4.custom/jquery-ui.css">
         <script src="https://code.jquery.com/jquery.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <style>
+        	.header{
+        		float: left;
+        	}
+        	.logo{
+        		padding-top: 10px;
+        	}
+        	.spinners{
+        		padding-left: 20%;
+        	}
+        </style>
     </head>
     <body>
         <div class="container">
-            <h2>Parking Finder</h2>
+    		<h2 class="header">Parking Finder</h2>
+    		<img class="header pull-right logo" class="pull-right" hieght="110px" width="110px" src="Images/sjsu_logo.png">
+        	<br><br><br>
             <h4>Parking Garages:</h4>
             <div class="panel-group" id="accordion">
                 <div class="panel panel-default">
@@ -20,9 +34,16 @@
                     </div>
                     <div id="collapse1" class="panel-collapse collapse in">
                         <div class="panel-body">
-                            <a href="https://www.google.com/maps/dir/current+location/SJSU+North+Garage,+%26,+S+10th+St+%26+E+San+Salvador+St,+San+Jose,+CA+95112/">Get Directions</a>
-                            <br>
-                            Recent Updates...
+                    		<a href="https://www.google.com/maps/dir/current+location/SJSU+North+Garage">Get Directions</a>
+                    		<h4>Report Available Space:</h4>
+                            <div class="spinners">
+                            	Floor:<input id="spinner1">
+                            	Available Spaces:<input id="spinner2">
+                            	<button type="button" class="btn btn-primary pull-right">Submit</button>
+                            </div>
+                            <h4>Floor Status:</h4>
+                            <h5>Under Construction...</h5>
+                            <p>Here we will have Red, Yellow, Green statuses for each floor in this garage</p>
                         </div>
                     </div>
                 </div>
@@ -32,7 +53,18 @@
                         <h4 class="panel-title">West Garage</h4>
                     </div>
                     <div id="collapse2" class="panel-collapse collapse">
-                        <div class="panel-body">Recent Updates...</div>
+                        <div class="panel-body">
+                        	<a href="https://www.google.com/maps/dir/current+location/SJSU+West+Garage">Get Directions</a>
+                        	<h4>Report Available Space:</h4>
+                            <div class="spinners">
+                            	Floor:<input id="spinner3">
+                            	Available Spaces:<input id="spinner4">
+                            	<button type="button" class="btn btn-primary pull-right">Submit</button>
+                            </div>
+                            <h4>Floor Status:</h4>
+                            <h5>Under Construction...</h5>
+                            <p>Here we will have Red, Yellow, Green statuses for each floor in this garage</p>
+                        </div>
                     </div>
                 </div>
                 <div class="panel panel-default">
@@ -41,65 +73,31 @@
                         <h4 class="panel-title">South Garage</h4>
                     </div>
                     <div id="collapse3" class="panel-collapse collapse">
-                        <div class="panel-body">Recent Updates...</div>
-                    </div>
-                </div>
-                <h4>Parking Lots:</h4>
-                <div class="panel panel-default">
-                    <a href="http://www.sjsu.edu/parking/maps/lots/"><span class="btn btn-primary glyphicon glyphicon-chevron-right pull-right"></span></a>
-                    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse4">
-                        <h4 class="panel-title">Parking Lot 1</h4>
-                    </div>
-                    <div id="collapse4" class="panel-collapse collapse">
-                        <div class="panel-body">Recent Updates...</div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <a href="http://www.sjsu.edu/parking/maps/lots/"><span class="btn btn-primary glyphicon glyphicon-chevron-right pull-right"></span></a>
-                    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse5">
-                        <h4 class="panel-title">Parking Lot 3</h4>
-                    </div>
-                    <div id="collapse5" class="panel-collapse collapse">
-                        <div class="panel-body">Recent Updates...</div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <a href="http://www.sjsu.edu/parking/maps/lots/"><span class="btn btn-primary glyphicon glyphicon-chevron-right pull-right"></span></a>
-                    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse6">
-                        <h4 class="panel-title">Parking Lot 4</h4>
-                    </div>
-                    <div id="collapse6" class="panel-collapse collapse">
-                        <div class="panel-body">Recent Updates...</div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <a href="http://www.sjsu.edu/parking/maps/lots/"><span class="btn btn-primary glyphicon glyphicon-chevron-right pull-right"></span></a>
-                    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse7">
-                        <h4 class="panel-title">Parking Lot 7</h4>
-                    </div>
-                    <div id="collapse7" class="panel-collapse collapse">
-                        <div class="panel-body">Recent Updates...</div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <a href="http://www.sjsu.edu/parking/maps/lots/"><span class="btn btn-primary glyphicon glyphicon-chevron-right pull-right"></span></a>
-                    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse8">
-                        <h4 class="panel-title">Parking Lot 8</h4>
-                    </div>
-                    <div id="collapse8" class="panel-collapse collapse">
-                        <div class="panel-body">Recent Updates...</div>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <a href="http://www.sjsu.edu/parking/maps/lots/"><span class="btn btn-primary glyphicon glyphicon-chevron-right pull-right"></span></a>
-                    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse9">
-                        <h4 class="panel-title">Parking Lot 11/13</h4>
-                    </div>
-                    <div id="collapse9" class="panel-collapse collapse">
-                        <div class="panel-body">Recent Updates...</div>
+                        <div class="panel-body">
+                        <a href="https://www.google.com/maps/dir/current+location/SJSU+South+Garage">Get Directions</a>
+                        	<h4>Report Available Space:</h4>
+                            <div class="spinners">
+                            	Floor:<input id="spinner5">
+                            	Available Spaces:<input id="spinner6">
+                            	<button type="button" class="btn btn-primary pull-right">Submit</button>
+                            </div>
+                            <h4>Floor Status:</h4>
+                            <h5>Under Construction...</h5>
+                            <p>Here we will have Red, Yellow, Green statuses for each floor in this garage</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script src="js/jquery-ui-1.11.4.custom/external/jquery/jquery.js"></script>
+		<script src="js/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+        <script>
+        	$( "#spinner1" ).spinner();
+        	$( "#spinner2" ).spinner();
+        	$( "#spinner3" ).spinner();
+        	$( "#spinner4" ).spinner();
+        	$( "#spinner5" ).spinner();
+        	$( "#spinner6" ).spinner();
+        </script>
     </body>
 </html>

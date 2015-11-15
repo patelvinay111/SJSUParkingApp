@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SJSU Parking app</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+        	function draw(){
+			    var c = document.getElementById("canvas");
+			    var ctx = c.getContext("2d");
+			    var img = document.getElementById("source");
+			    ctx.drawImage(img, 10, 10);
+        	}
+        	function validate(){
+        		email = document.getElementById("email").value;
+        		emailRE = /^.+@.+\..{2,4}$/;
+        		if(!email.match(emailRE)){
+        			var failure_element = document.getElementById('failure');
+        			failure_element.style.display = null;
+        			shake();
+        		}else{
+        			var success_element = document.getElementById('success');
+        			success_element.style.display = null;
+        		}
+        	}
+        </script>
+</head>
+
+<body onload="draw()">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-9">
+				<canvas id="canvas" width="1200" height="420">
+					<div style="display:none;">
+						<img id="source" src="Images/sjsu_logo.png" width="300" height="227">
+					</div>
+				</canvas>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-5"></div>
+			<div class="col-md-7">
+				<h1>Parking App</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<form>
+					<div class="form-group">
+			    		<label for="email">Email:</label>
+			    		<div class="input-group">
+			    			<input type="text" class="form-control" placeholder="SJSU Email" aria-describedby="basic-addon2">
+			    			<span class="input-group-addon" id="basic-addon2">@sjsu.edu</span>
+						</div>
+			  		</div>
+				  	<button type="button" class="btn btn-primary" onclick="validate()">Submit</button>
+				</form>
+			</div>
+			<div class="col-md-3">
+			<br>
+				<div id="success" style="display:none;" class="alert alert-success fade in">
+					<a href="#" class="close" data-dismiss="alert">&times;</a>
+					<strong>Success!</strong> Valid email format
+				</div>
+				<div id="failure" style="display:none;" class="alert alert-danger fade in">
+					<a href="#" class="close" data-dismiss="alert">&times;</a>
+					<strong>Error!</strong> Invalid Email format
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function shake(){
+			$('#failure').effect( "shake", {times:4}, 1000 );
+		}
+	</script>
+</body>
+</html>
