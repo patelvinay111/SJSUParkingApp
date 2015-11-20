@@ -17,17 +17,30 @@
 
     <script>
         $(document).ready(function(){
-            setInterval(function() {
-                    $("#north1").load('status.php?garage=North&floor=1')
-                }, 2000);
+            /*=================================== North Garage ==================================*/
+            setInterval(function() {$("#north1").load('status.php?garage=North&floor=1')}, 2000);
             setInterval(function() {$("#north2").load('status.php?garage=North&floor=2')}, 2000);
-
+            setInterval(function() {$("#north3").load('status.php?garage=North&floor=3')}, 2000);
+            setInterval(function() {$("#north4").load('status.php?garage=North&floor=4')}, 2000);
+            setInterval(function() {$("#north5").load('status.php?garage=North&floor=5')}, 2000);
+            setInterval(function() {$("#north6").load('status.php?garage=North&floor=6')}, 2000);
+            
+            /*=================================== South Garage ==================================*/
+            setInterval(function() {$("#south1").load('status.php?garage=South&floor=1')}, 2000);
+            setInterval(function() {$("#south2").load('status.php?garage=South&floor=2')}, 2000);
+            setInterval(function() {$("#south3").load('status.php?garage=South&floor=3')}, 2000);
+            setInterval(function() {$("#south4").load('status.php?garage=South&floor=4')}, 2000);
+            setInterval(function() {$("#south5").load('status.php?garage=South&floor=5')}, 2000);
+            
+            /*=================================== West Garage ==================================*/
+            setInterval(function() {$("#west1").load('status.php?garage=West&floor=1')}, 2000);
+            setInterval(function() {$("#west2").load('status.php?garage=West&floor=2')}, 2000);
+            setInterval(function() {$("#west3").load('status.php?garage=West&floor=3')}, 2000);
+            setInterval(function() {$("#west4").load('status.php?garage=West&floor=4')}, 2000);
+            setInterval(function() {$("#west5").load('status.php?garage=West&floor=5')}, 2000);           
         });
-
     </script>
-        
-</head>
-    
+
 <body>
 <div class="container">
     <h2 class="header">Parking Finder</h2>
@@ -56,14 +69,16 @@
                            <button type="submit" type="button" class="btn btn-primary pull-right">Submit</button>
                         </form>
                     </div>
-                    
                     <h4>Floor Status:</h4>
                     <h5>Under Construction...</h5>
                     <p>Here we will have Red, Yellow, Green statuses for each floor in this garage</p>
                     <div>
                         <p>Floor 1:  Available Spaces = <span id="north1"></span> </p>
                         <p>Floor 2:  Available Spaces = <span id="north2"></span> </p>
-
+                        <p>Floor 3:  Available Spaces = <span id="north3"></span> </p>
+                        <p>Floor 4:  Available Spaces = <span id="north4"></span> </p>
+                        <p>Floor 5:  Available Spaces = <span id="north5"></span> </p>
+                        <p>Floor 6:  Available Spaces = <span id="north6"></span> </p>
                     </div>
                 </div>
             </div>
@@ -92,6 +107,13 @@
                     <h4>Floor Status:</h4>
                     <h5>Under Construction...</h5>
                     <p>Here we will have Red, Yellow, Green statuses for each floor in this garage</p>
+                    <div>
+                        <p>Floor 1:  Available Spaces = <span id="west1"></span> </p>
+                        <p>Floor 2:  Available Spaces = <span id="west2"></span> </p>
+                        <p>Floor 3:  Available Spaces = <span id="west3"></span> </p>
+                        <p>Floor 4:  Available Spaces = <span id="west4"></span> </p>
+                        <p>Floor 5:  Available Spaces = <span id="west5"></span> </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -118,6 +140,13 @@
                     <h4>Floor Status:</h4>
                     <h5>Under Construction...</h5>
                     <p>Here we will have Red, Yellow, Green statuses for each floor in this garage</p>
+                    <div>
+                        <p>Floor 1:  Available Spaces = <span id="south1"></span> </p>
+                        <p>Floor 2:  Available Spaces = <span id="south2"></span> </p>
+                        <p>Floor 3:  Available Spaces = <span id="south3"></span> </p>
+                        <p>Floor 4:  Available Spaces = <span id="south4"></span> </p>
+                        <p>Floor 5:  Available Spaces = <span id="south5"></span> </p>
+                    </div>
                 </div>
             </div>
         </div>
