@@ -25,6 +25,8 @@ DROP TABLE IF EXISTS `Parking`;
 CREATE TABLE `Parking` (
   `garage` varchar(45) DEFAULT NULL,
   `floor` int(11) DEFAULT NULL,
+  `spaces` int(11) DEFAULT NULL,
+  `updateOn` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP
   `spaces` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -35,6 +37,7 @@ CREATE TABLE `Parking` (
 
 LOCK TABLES `Parking` WRITE;
 /*!40000 ALTER TABLE `Parking` DISABLE KEYS */;
+INSERT INTO `Parking` VALUES ('North',1,20,'2015-11-26 00:31:55'),('North',2,0,'2015-11-26 00:27:00'),('North',3,0,'2015-11-26 00:27:00'),('North',4,0,'2015-11-26 00:27:00'),('North',5,0,'2015-11-26 00:27:00'),('North',6,0,'2015-11-26 00:27:00'),('South',1,0,'2015-11-26 00:27:00'),('South',2,0,'2015-11-26 00:27:00'),('South',3,0,'2015-11-26 00:27:00'),('South',4,0,'2015-11-26 00:27:00'),('South',5,0,'2015-11-26 00:27:00'),('West',1,0,'2015-11-26 00:27:00'),('West',2,0,'2015-11-26 00:27:00'),('West',3,0,'2015-11-26 00:27:00'),('West',4,0,'2015-11-26 00:27:00'),('West',5,0,'2015-11-26 00:27:00');
 INSERT INTO `Parking` VALUES ('North',1,0),('North',2,0),('North',3,0),('North',4,0),('North',5,0),('North',6,0),('South',1,0),('South',2,0),('South',3,0),('South',4,0),('South',5,0),('West',1,0),('West',2,0),('West',3,0),('West',4,0),('West',5,0);
 /*!40000 ALTER TABLE `Parking` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -54,6 +57,7 @@ CREATE TABLE `Report` (
   `spaces` int(11) DEFAULT NULL,
   `updateOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`reportID`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -63,6 +67,7 @@ CREATE TABLE `Report` (
 
 LOCK TABLES `Report` WRITE;
 /*!40000 ALTER TABLE `Report` DISABLE KEYS */;
+INSERT INTO `Report` VALUES (1,1,'North',1,12,'2015-11-26 00:16:14'),(2,1,'North',2,25,'2015-11-26 00:21:12'),(3,1,'North',3,0,'2015-11-26 00:22:22'),(4,1,'North',3,12,'2015-11-26 00:25:48'),(5,1,'North',1,20,'2015-11-26 00:31:55');
 /*!40000 ALTER TABLE `Report` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -122,4 +127,5 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+-- Dump completed on 2015-11-25 16:34:21
 -- Dump completed on 2015-11-18 12:13:08

@@ -25,7 +25,6 @@
             //echo "<script>setTimeout(\"location.href = 'http://localhost/SJSUParkingApp/index.html';\",0);</script>";                  
             //echo "<script  type='text/javascript'> alert('$message'); </script>";
             //exit();
-            
             header("Location:http://localhost/SJSUParkingApp/index.html");
             exit();
         }else

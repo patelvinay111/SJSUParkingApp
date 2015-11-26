@@ -3,10 +3,13 @@
         private $garage;
         private $floor;
         private $spaces;
+        private $updateOn;
             
         public function getGarage()     { return $this->garage; }
         public function getFloor()      { return $this->floor; }
-        public function getSpaces()     { return $this->spaces; }           
+        public function getSpaces()     { return $this->spaces; }   
+        public function getUpdateOn()   { return $this->updateOn; }
+          
     }//Parking
 
     try {       
@@ -31,7 +34,10 @@
         // Construct the HTML table row by row.
         while ($user = $ps->fetch()) {
             $value = $user->getSpaces();
-            echo $value;             
+            $time = $user->getUpdateOn();
+            $timeArray = date_parse($time);
+            echo $value." at ";
+            echo $timeArray[hour]. ":".$timeArray[minute];
         }            
     }   
     catch(Exception $ex) {
