@@ -1,5 +1,4 @@
 -- MySQL dump 10.13  Distrib 5.6.26, for osx10.8 (x86_64)
---
 -- Host: localhost    Database: SJSU_Parking
 -- ------------------------------------------------------
 -- Server version	5.6.26
@@ -15,9 +14,7 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
---
 -- Table structure for table `Parking`
---
 
 DROP TABLE IF EXISTS `Parking`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -27,24 +24,19 @@ CREATE TABLE `Parking` (
   `floor` int(11) DEFAULT NULL,
   `spaces` int(11) DEFAULT NULL,
   `updateOn` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP
-  `spaces` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
 -- Dumping data for table `Parking`
---
 
 LOCK TABLES `Parking` WRITE;
 /*!40000 ALTER TABLE `Parking` DISABLE KEYS */;
 INSERT INTO `Parking` VALUES ('North',1,20,'2015-11-26 00:31:55'),('North',2,0,'2015-11-26 00:27:00'),('North',3,0,'2015-11-26 00:27:00'),('North',4,0,'2015-11-26 00:27:00'),('North',5,0,'2015-11-26 00:27:00'),('North',6,0,'2015-11-26 00:27:00'),('South',1,0,'2015-11-26 00:27:00'),('South',2,0,'2015-11-26 00:27:00'),('South',3,0,'2015-11-26 00:27:00'),('South',4,0,'2015-11-26 00:27:00'),('South',5,0,'2015-11-26 00:27:00'),('West',1,0,'2015-11-26 00:27:00'),('West',2,0,'2015-11-26 00:27:00'),('West',3,0,'2015-11-26 00:27:00'),('West',4,0,'2015-11-26 00:27:00'),('West',5,0,'2015-11-26 00:27:00');
-INSERT INTO `Parking` VALUES ('North',1,0),('North',2,0),('North',3,0),('North',4,0),('North',5,0),('North',6,0),('South',1,0),('South',2,0),('South',3,0),('South',4,0),('South',5,0),('West',1,0),('West',2,0),('West',3,0),('West',4,0),('West',5,0);
 /*!40000 ALTER TABLE `Parking` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
 -- Table structure for table `Report`
---
+
 
 DROP TABLE IF EXISTS `Report`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -58,12 +50,9 @@ CREATE TABLE `Report` (
   `updateOn` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`reportID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
 -- Dumping data for table `Report`
---
 
 LOCK TABLES `Report` WRITE;
 /*!40000 ALTER TABLE `Report` DISABLE KEYS */;
@@ -94,9 +83,7 @@ DELIMITER ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 
---
 -- Table structure for table `User`
---
 
 DROP TABLE IF EXISTS `User`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -108,9 +95,7 @@ CREATE TABLE `User` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
 -- Dumping data for table `User`
---
 
 LOCK TABLES `User` WRITE;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
