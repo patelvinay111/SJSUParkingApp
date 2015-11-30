@@ -1,166 +1,178 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>SJSU Parking App</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Latest compiled and minified CSS -->
-    <!-- CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="js/jquery-ui-1.11.4.custom/jquery-ui.css">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-
-    <!-- JS -->
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="js/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
-    <script src="js/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
-    <script>
-        $(document).ready(function(){
-            /*=================================== North Garage ==================================*/
-            setInterval(function() {$("#north1").load('status.php?garage=North&floor=1')}, 2000);
-            setInterval(function() {$("#north2").load('status.php?garage=North&floor=2')}, 2000);
-            setInterval(function() {$("#north3").load('status.php?garage=North&floor=3')}, 2000);
-            setInterval(function() {$("#north4").load('status.php?garage=North&floor=4')}, 2000);
-            setInterval(function() {$("#north5").load('status.php?garage=North&floor=5')}, 2000);
-            setInterval(function() {$("#north6").load('status.php?garage=North&floor=6')}, 2000);
-            
-            /*=================================== South Garage ==================================*/
-            setInterval(function() {$("#south1").load('status.php?garage=South&floor=1')}, 2000);
-            setInterval(function() {$("#south2").load('status.php?garage=South&floor=2')}, 2000);
-            setInterval(function() {$("#south3").load('status.php?garage=South&floor=3')}, 2000);
-            setInterval(function() {$("#south4").load('status.php?garage=South&floor=4')}, 2000);
-            setInterval(function() {$("#south5").load('status.php?garage=South&floor=5')}, 2000);
-            
-            /*=================================== West Garage ==================================*/
-            setInterval(function() {$("#west1").load('status.php?garage=West&floor=1')}, 2000);
-            setInterval(function() {$("#west2").load('status.php?garage=West&floor=2')}, 2000);
-            setInterval(function() {$("#west3").load('status.php?garage=West&floor=3')}, 2000);
-            setInterval(function() {$("#west4").load('status.php?garage=West&floor=4')}, 2000);
-            setInterval(function() {$("#west5").load('status.php?garage=West&floor=5')}, 2000);           
-        });
-    </script>
-
-<body>
-<div class="container">
-    <h2 class="header">Parking Finder</h2>
-    <img class="header pull-right logo" class="pull-right" hieght="110px" width="110px" src="Images/sjsu_logo.png">
-    <br><br><br>
-    
-    <h4>Parking Garages:</h4>
-    <div class="panel-group" id="accordion">
-        <div class="panel panel-default">
-            <a href="http://www.sjsu.edu/parking/maps/garages/"><span class="btn btn-primary glyphicon glyphicon-chevron-right pull-right"></span></a>
-            
-            <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-                <h4 class="panel-title">North Garage</h4>
-            </div>
-            
-            <div id="collapse1" class="panel-collapse collapse in">
-                <div class="panel-body">
-                    <a href="https://www.google.com/maps/dir/current+location/SJSU+North+Garage">Get Directions</a>
-                    <h4>Report Available Space:</h4>
-                    
-                    <div class="spinners">
-                        <form action="provider.php" method="get">
-                           <input type="hidden" name="garage" value="North"/>
-                           Floor:<input id="spinner1" name="floor">
-                           Available Spaces:<input id="spinner2" name="spaces">
-                           <button type="submit" type="button" class="btn btn-primary pull-right">Submit</button>
-                        </form>
-                    </div>
-                    <h4>Floor Status:</h4>
-                    <h5>Under Construction...</h5>
-                    <p>Here we will have Red, Yellow, Green statuses for each floor in this garage</p>
-                    <div>
-                        <p>Floor 1:  Available Spaces = <span id="north1"></span> </p>
-                        <p>Floor 2:  Available Spaces = <span id="north2"></span> </p>
-                        <p>Floor 3:  Available Spaces = <span id="north3"></span> </p>
-                        <p>Floor 4:  Available Spaces = <span id="north4"></span> </p>
-                        <p>Floor 5:  Available Spaces = <span id="north5"></span> </p>
-                        <p>Floor 6:  Available Spaces = <span id="north6"></span> </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        
-        <div class="panel panel-default">
-            <a href="http://www.sjsu.edu/parking/maps/garages/"><span class="btn btn-primary glyphicon glyphicon-chevron-right pull-right"></span></a>
-            <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-                <h4 class="panel-title">West Garage</h4>
-            </div>
-            <div id="collapse2" class="panel-collapse collapse">
-                <div class="panel-body">
-                    <a href="https://www.google.com/maps/dir/current+location/SJSU+West+Garage">Get Directions</a>
-                    <h4>Report Available Space:</h4>
-                    
-                    <div class="spinners">
-                        <form action="provider.php" method="get">
-                           <input type="hidden" name="garage" value="West"/>
-                           Floor:<input id="spinner3" name="floor">
-                           Available Spaces:<input id="spinner4" name="spaces">
-                           <button type="submit" type="button" class="btn btn-primary pull-right">Submit</button>
-                        </form>
-                    </div>
-                    
-                    <h4>Floor Status:</h4>
-                    <h5>Under Construction...</h5>
-                    <p>Here we will have Red, Yellow, Green statuses for each floor in this garage</p>
-                    <div>
-                        <p>Floor 1:  Available Spaces = <span id="west1"></span> </p>
-                        <p>Floor 2:  Available Spaces = <span id="west2"></span> </p>
-                        <p>Floor 3:  Available Spaces = <span id="west3"></span> </p>
-                        <p>Floor 4:  Available Spaces = <span id="west4"></span> </p>
-                        <p>Floor 5:  Available Spaces = <span id="west5"></span> </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="panel panel-default">
-            <a href="http://www.sjsu.edu/parking/maps/garages/"><span class="btn btn-primary glyphicon glyphicon-chevron-right pull-right"></span></a>
-            <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse3">
-                <h4 class="panel-title">South Garage</h4>
-            </div>
-            <div id="collapse3" class="panel-collapse collapse">
-                <div class="panel-body">
-                <a href="https://www.google.com/maps/dir/current+location/SJSU+South+Garage">Get Directions</a>
-                    <h4>Report Available Space:</h4>
-                    
-                    <div class="spinners">
-                        <form action="provider.php" method="get">
-                            <input type="hidden" name="garage" value="South"/>
-                           Floor:<input id="spinner5" name="floor">
-                           Available Spaces:<input id="spinner6" name="spaces">
-                           <button type="submit" type="button" class="btn btn-primary pull-right">Submit</button>
-                        </form>
-                    </div>
-                    
-                    <h4>Floor Status:</h4>
-                    <h5>Under Construction...</h5>
-                    <p>Here we will have Red, Yellow, Green statuses for each floor in this garage</p>
-                    <div>
-                        <p>Floor 1:  Available Spaces = <span id="south1"></span> </p>
-                        <p>Floor 2:  Available Spaces = <span id="south2"></span> </p>
-                        <p>Floor 3:  Available Spaces = <span id="south3"></span> </p>
-                        <p>Floor 4:  Available Spaces = <span id="south4"></span> </p>
-                        <p>Floor 5:  Available Spaces = <span id="south5"></span> </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-       
+    <head>
+        <title>SJSU Parking App</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Latest compiled and minified CSS -->
+        <!-- CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="js/jquery-ui-1.11.4.custom/jquery-ui.css">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+        <link rel="stylesheet" href="dropdown select/dist/css/bootstrap-select.css">
+        <!-- JS -->
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <script src="js/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+        <script src="js/jquery.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="dropdown select/dist/js/bootstrap-select.js"></script>
         <script>
-        	$( "#spinner1" ).spinner();
-        	$( "#spinner2" ).spinner();
-        	$( "#spinner3" ).spinner();
-        	$( "#spinner4" ).spinner();
-        	$( "#spinner5" ).spinner();
-        	$( "#spinner6" ).spinner();
+            $(document).ready(function(){
+                /*=================================== North Garage ==================================*/
+                setInterval(function() {$("#north1").load('status.php?garage=North&floor=1')}, 2000);
+                setInterval(function() {$("#north2").load('status.php?garage=North&floor=2')}, 2000);
+                setInterval(function() {$("#north3").load('status.php?garage=North&floor=3')}, 2000);
+                setInterval(function() {$("#north4").load('status.php?garage=North&floor=4')}, 2000);
+                setInterval(function() {$("#north5").load('status.php?garage=North&floor=5')}, 2000);
+                setInterval(function() {$("#north6").load('status.php?garage=North&floor=6')}, 2000);
+                
+                /*=================================== South Garage ==================================*/
+                setInterval(function() {$("#south1").load('status.php?garage=South&floor=1')}, 2000);
+                setInterval(function() {$("#south2").load('status.php?garage=South&floor=2')}, 2000);
+                setInterval(function() {$("#south3").load('status.php?garage=South&floor=3')}, 2000);
+                setInterval(function() {$("#south4").load('status.php?garage=South&floor=4')}, 2000);
+                setInterval(function() {$("#south5").load('status.php?garage=South&floor=5')}, 2000);
+                
+                /*=================================== West Garage ==================================*/
+                setInterval(function() {$("#west1").load('status.php?garage=West&floor=1')}, 2000);
+                setInterval(function() {$("#west2").load('status.php?garage=West&floor=2')}, 2000);
+                setInterval(function() {$("#west3").load('status.php?garage=West&floor=3')}, 2000);
+                setInterval(function() {$("#west4").load('status.php?garage=West&floor=4')}, 2000);
+                setInterval(function() {$("#west5").load('status.php?garage=West&floor=5')}, 2000);           
+            });
         </script>
-</body>
-    
+    <body>
+        <div class="container">
+            <h2 class="header">Parking Finder</h2>
+            <img class="header pull-right logo" class="pull-right" hieght="110px" width="110px" src="Images/sjsu_logo.png">
+            <br><br><br>
+            <h4>Parking Garages:</h4>
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <a href="http://www.sjsu.edu/parking/maps/garages/"><span class="btn btn-primary glyphicon glyphicon-chevron-right pull-right"></span></a>
+                    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                        <h4 class="panel-title">North Garage</h4>
+                    </div>
+                    <div id="collapse1" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                            <h3><a href="https://www.google.com/maps/dir/current+location/SJSU+North+Garage">Get Directions</a></h3>
+                            <h4>Report Available Space:</h4>
+                            <div class="spinners">
+                                <form action="provider.php" method="get">
+                                    <input type="hidden" name="garage" value="North"/>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">Floor:</span>
+                                                <select class="form-control selectpicker" data-mobile="true">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                    <option>6</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">Available Spaces:</span>
+                                                <select class="form-control selectpicker" data-mobile="true">
+                                                    <option> </option>
+                                                    <option style="color: white; background-color: red;">Don't bother</option>
+                                                    <option style="background-color: yellow;">Give it a shot</option>
+                                                    <option style="color: white; background-color: green;">Plenty of parking</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <button type="submit" type="button" class="btn btn-primary">Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <h4>Floor Status:</h4>
+                            <h5>Under Construction...</h5>
+                            <p>Here we will have Red, Yellow, Green statuses for each floor in this garage</p>
+                            <div>
+                                <p>Floor 1:  Available Spaces = <span id="north1"></span> </p>
+                                <p>Floor 2:  Available Spaces = <span id="north2"></span> </p>
+                                <p>Floor 3:  Available Spaces = <span id="north3"></span> </p>
+                                <p>Floor 4:  Available Spaces = <span id="north4"></span> </p>
+                                <p>Floor 5:  Available Spaces = <span id="north5"></span> </p>
+                                <p>Floor 6:  Available Spaces = <span id="north6"></span> </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <a href="http://www.sjsu.edu/parking/maps/garages/"><span class="btn btn-primary glyphicon glyphicon-chevron-right pull-right"></span></a>
+                    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                        <h4 class="panel-title">West Garage</h4>
+                    </div>
+                    <div id="collapse2" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <a href="https://www.google.com/maps/dir/current+location/SJSU+West+Garage">Get Directions</a>
+                            <h4>Report Available Space:</h4>
+                            <div class="spinners">
+                                <form action="provider.php" method="get">
+                                    <input type="hidden" name="garage" value="West"/>
+                                    Floor:<input id="spinner3" name="floor">
+                                    Available Spaces:<input id="spinner4" name="spaces">
+                                    <button type="submit" type="button" class="btn btn-primary pull-right">Submit</button>
+                                </form>
+                            </div>
+                            <h4>Floor Status:</h4>
+                            <h5>Under Construction...</h5>
+                            <p>Here we will have Red, Yellow, Green statuses for each floor in this garage</p>
+                            <div>
+                                <p>Floor 1:  Available Spaces = <span id="west1"></span> </p>
+                                <p>Floor 2:  Available Spaces = <span id="west2"></span> </p>
+                                <p>Floor 3:  Available Spaces = <span id="west3"></span> </p>
+                                <p>Floor 4:  Available Spaces = <span id="west4"></span> </p>
+                                <p>Floor 5:  Available Spaces = <span id="west5"></span> </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <a href="http://www.sjsu.edu/parking/maps/garages/"><span class="btn btn-primary glyphicon glyphicon-chevron-right pull-right"></span></a>
+                    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                        <h4 class="panel-title">South Garage</h4>
+                    </div>
+                    <div id="collapse3" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <a href="https://www.google.com/maps/dir/current+location/SJSU+South+Garage">Get Directions</a>
+                            <h4>Report Available Space:</h4>
+                            <div class="spinners">
+                                <form action="provider.php" method="get">
+                                    <input type="hidden" name="garage" value="South"/>
+                                    Floor:<input id="spinner5" name="floor">
+                                    Available Spaces:<input id="spinner6" name="spaces">
+                                    <button type="submit" type="button" class="btn btn-primary pull-right">Submit</button>
+                                </form>
+                            </div>
+                            <h4>Floor Status:</h4>
+                            <h5>Under Construction...</h5>
+                            <p>Here we will have Red, Yellow, Green statuses for each floor in this garage</p>
+                            <div>
+                                <p>Floor 1:  Available Spaces = <span id="south1"></span> </p>
+                                <p>Floor 2:  Available Spaces = <span id="south2"></span> </p>
+                                <p>Floor 3:  Available Spaces = <span id="south3"></span> </p>
+                                <p>Floor 4:  Available Spaces = <span id="south4"></span> </p>
+                                <p>Floor 5:  Available Spaces = <span id="south5"></span> </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $( "#spinner1" ).spinner();
+            $( "#spinner2" ).spinner();
+            $( "#spinner3" ).spinner();
+            $( "#spinner4" ).spinner();
+            $( "#spinner5" ).spinner();
+            $( "#spinner6" ).spinner();
+        </script>
+    </body>
 </html>
