@@ -20,7 +20,7 @@
         
         // Connect to the database.
         $con = new PDO("mysql:host=localhost;dbname=SJSU_Parking",
-                           "root", "myfirstDB");
+                           "root", "malik");
         $con->setAttribute(PDO::ATTR_ERRMODE,
                                PDO::ERRMODE_EXCEPTION);
             
@@ -37,7 +37,7 @@
             $time = $user->getUpdateOn();
             $timeArray = date_parse($time);
             echo $value." at ";
-            echo $timeArray[hour]. ":".$timeArray[minute];
+            echo $timeArray['hour']. ":".$timeArray['minute'];
         }            
     }   
     catch(Exception $ex) {
