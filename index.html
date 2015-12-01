@@ -12,10 +12,27 @@
         <!-- JS -->
         <script src="https://code.jquery.com/jquery.js"></script>
         <script src="js/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
-        <script src="js/jquery.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <script src="dropdown select/dist/js/bootstrap-select.js"></script>
-        
+        <script>
+            function validate(){
+                var availableSpaces = document.getElementById("available_spaces_dropdown");
+
+                var success_element = document.getElementById('success');
+                var failure_element = document.getElementById('failure');
+
+                if(availableSpaces.options[availableSpaces.selectedIndex].text == ""){
+                    failure_element.style.display = null;
+                    success_element.style.display = "none";
+                    return false;
+                }else{
+                    success_element.style.display = null;
+                    failure_element.style.display = "none";
+                    return true;
+                }
+            }
+        </script>
+
         <script src="dist/sweetalert.min.js"></script> 
         <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
         
@@ -41,7 +58,7 @@
                 setInterval(function() {$("#west2").load('status.php?garage=West&floor=2')}, 2000);
                 setInterval(function() {$("#west3").load('status.php?garage=West&floor=3')}, 2000);
                 setInterval(function() {$("#west4").load('status.php?garage=West&floor=4')}, 2000);
-                setInterval(function() {$("#west5").load('status.php?garage=West&floor=5')}, 2000);  
+                setInterval(function() {$("#west5").load('status.php?garage=West&floor=5')}, 2000);
             });
             
         </script>
@@ -60,16 +77,18 @@
                     </div>
                     <div id="collapse1" class="panel-collapse collapse in">
                         <div class="panel-body">
-                            <h3><a href="https://www.google.com/maps/dir/current+location/SJSU+North+Garage">Get Directions</a></h3>
+                            <h3><a href="https://www.google.com/maps/dir/current+location/SJSU+North+Garage">
+                                <span class="glyphicon glyphicon-map-marker"></span> Get Directions</a>
+                            </h3>
                             <h4>Report Available Space:</h4>
                             <div class="spinners">
-                                <form action="provider.php" method="get">
+                                <form action="provider.php" onsubmit="return validate()" method="get">
                                     <input type="hidden" name="garage" value="North"/>
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="input-group">
                                                 <span class="input-group-addon">Floor:</span>
-                                                <select class="form-control selectpicker" data-mobile="true" name="floor">
+                                                <select class="form-control selectpicker" data-mobile="true">
                                                     <option>1</option>
                                                     <option>2</option>
                                                     <option>3</option>
@@ -82,7 +101,7 @@
                                         <div class="col-md-4">
                                             <div class="input-group">
                                                 <span class="input-group-addon">Available Spaces:</span>
-                                                <select class="form-control selectpicker" data-mobile="true" name="spaces">
+                                                <select class="form-control selectpicker" id="available_spaces_dropdown" data-mobile="true" name="spaces">
                                                     <option> </option>
                                                     <option style="color: white; background-color: red;">Don't bother</option>
                                                     <option style="background-color: yellow;">Give it a shot</option>
@@ -90,8 +109,18 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        <div class="col-md-1">
+                                            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-send"></span></button>
+                                        </div>
                                         <div class="col-md-4">
-                                            <button type="submit" type="button" class="btn btn-primary">Submit</button>
+                                            <div id="success" style="display:none;" class="alert alert-success fade in">
+                                                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                                <strong>Success!</strong> Thank you for reporting.
+                                            </div>
+                                            <div id="failure" style="display:none;" class="alert alert-danger fade in">
+                                                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                                <strong>Oops!</strong> Available Spaces is Empty.
+                                            </div>
                                         </div>
                                     </div>
                                 </form>
