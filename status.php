@@ -16,11 +16,9 @@
         $garage = $_GET['garage'];
         $floor = $_GET['floor'];
         
-        
-        
         // Connect to the database.
         $con = new PDO("mysql:host=localhost;dbname=SJSU_Parking",
-                           "root", "malik");
+                           "root", "myfirstDB");
         $con->setAttribute(PDO::ATTR_ERRMODE,
                                PDO::ERRMODE_EXCEPTION);
             
@@ -36,8 +34,9 @@
             $value = $user->getSpaces();
             $time = $user->getUpdateOn();
             $timeArray = date_parse($time);
-            echo $value." at ";
-            echo $timeArray['hour']. ":".$timeArray['minute'];
+            
+            echo "[".$timeArray['hour']. ":".$timeArray['minute']."] ";
+            echo $value;
         }            
     }   
     catch(Exception $ex) {

@@ -1,11 +1,11 @@
+<script src="dist/sweetalert.min.js"></script> 
+<link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
 
-   <?php        
+
+<?php        
     $floorNum = filter_input(INPUT_GET, "floor");
     $availableSpaces = filter_input(INPUT_GET, "spaces");
     $garageName = filter_input(INPUT_GET, "garage");
-    //$floorNum = $_POST['floor'];
-    //$availableSpaces = $_POST['spaces'];
-    //$garageName = $_POST['garage'];
 
     try{    
         // Connect to the database.
@@ -21,12 +21,14 @@
         $ps->bindParam(':availableSpaces', $availableSpaces);
         
         if($ps->execute() === TRUE){
-            //$message = "Thank you!";            
-            //echo "<script>setTimeout(\"location.href = 'http://localhost/SJSUParkingApp/index.html';\",0);</script>";                  
-            //echo "<script  type='text/javascript'> alert('$message'); </script>";
-            //exit();
-            header("Location:http://localhost/SJSUParkingApp/index.html");
+            $message = "Thank you for your report!";            
+            echo "<script>setTimeout(\"location.href = 'http://localhost/cs174/SJSUParkingApp/index.html';\",0);</script>";                  
+            echo "<script  type='text/javascript' > 
+                        alert('$message');
+                </script>";
             exit();
+            //header("Location: http://localhost/cs174/SJSUParkingApp/index.html");
+            //exit();
         }else
             echo "Error: " . $sql . "<br>" . $con->error;
     }
