@@ -16,10 +16,62 @@
         <script src="dropdown select/dist/js/bootstrap-select.js"></script>
         <script>
             function validate(){
-                var availableSpaces = document.getElementById("available_spaces_dropdown");
+                var floor = document.getElementById("floor");
+                var floorDropdown = document.getElementById("floor_dropdown");
+                floor.value = floorDropdown.options[floorDropdown.selectedIndex].value;
 
-                var success_element = document.getElementById('success');
-                var failure_element = document.getElementById('failure');
+                var spaces = document.getElementById("spaces");
+            	var availableSpaces = document.getElementById("available_spaces_dropdown");
+                spaces.value = availableSpaces.options[availableSpaces.selectedIndex].value;
+
+            	var success_element = document.getElementById('success');
+            	var failure_element = document.getElementById('failure');
+
+            	if(availableSpaces.options[availableSpaces.selectedIndex].text == ""){
+        			failure_element.style.display = null;
+        			success_element.style.display = "none";
+        			return false;
+            	}else{
+            		success_element.style.display = null;
+        			failure_element.style.display = "none";
+        			return true;
+            	}
+            }
+
+            function validateWest(){
+                var floor = document.getElementsByName("floor")[1];
+                var floorDropdown = document.getElementById("floor_dropdown_west");
+                floor.value = floorDropdown.options[floorDropdown.selectedIndex].value;
+
+                var spaces = document.getElementsByName("spaces")[1];
+                var availableSpaces = document.getElementById("available_spaces_dropdown_west");
+                spaces.value = availableSpaces.options[availableSpaces.selectedIndex].value;
+
+                var success_element = document.getElementById('successWest');
+                var failure_element = document.getElementById('failureWest');
+
+                if(availableSpaces.options[availableSpaces.selectedIndex].text == ""){
+                    failure_element.style.display = null;
+                    success_element.style.display = "none";
+                    return false;
+                }else{
+                    success_element.style.display = null;
+                    failure_element.style.display = "none";
+                    return true;
+                }
+            }
+
+            function validateSouth(){
+                var floor = document.getElementsByName("floor")[2];
+                var floorDropdown = document.getElementById("floor_dropdown_south");
+                floor.value = floorDropdown.options[floorDropdown.selectedIndex].value;
+
+                var spaces = document.getElementsByName("spaces")[2];
+                var availableSpaces = document.getElementById("available_spaces_dropdown_south");
+                spaces.value = availableSpaces.options[availableSpaces.selectedIndex].value;
+
+                var success_element = document.getElementById('successSouth');
+                var failure_element = document.getElementById('failureSouth');
 
                 if(availableSpaces.options[availableSpaces.selectedIndex].text == ""){
                     failure_element.style.display = null;
@@ -32,10 +84,6 @@
                 }
             }
         </script>
-
-        <script src="dist/sweetalert.min.js"></script> 
-        <link rel="stylesheet" type="text/css" href="dist/sweetalert.css">
-        
         <script>
             $(document).ready(function(){
                 /*=================================== North Garage ==================================*/
@@ -60,9 +108,7 @@
                 setInterval(function() {$("#west4").load('status.php?garage=West&floor=4')}, 2000);
                 setInterval(function() {$("#west5").load('status.php?garage=West&floor=5')}, 2000);
             });
-            
         </script>
-        
     <body>
         <div class="container">
             <h2 class="header">Parking Finder</h2>
@@ -70,9 +116,10 @@
             <br><br><br>
             <h4>Parking Garages:</h4>
             <div class="panel-group" id="accordion">
+                <!--North-->
                 <div class="panel panel-default">
                     <a href="http://www.sjsu.edu/parking/maps/garages/"><span class="btn btn-primary glyphicon glyphicon-chevron-right pull-right"></span></a>
-                    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse1" data-target="#collapse1">
                         <h4 class="panel-title">North Garage</h4>
                     </div>
                     <div id="collapse1" class="panel-collapse collapse in">
@@ -81,164 +128,193 @@
                                 <span class="glyphicon glyphicon-map-marker"></span> Get Directions</a>
                             </h3>
                             <h4>Report Available Space:</h4>
-                            <div class="spinners">
-                                <form action="provider.php" onsubmit="return validate()" method="get">
-                                    <input type="hidden" name="garage" value="North"/>
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">Floor:</span>
-                                                <select class="form-control selectpicker" data-mobile="true">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                    <option>6</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">Available Spaces:</span>
-                                                <select class="form-control selectpicker" id="available_spaces_dropdown" data-mobile="true" name="spaces">
-                                                    <option> </option>
-                                                    <option style="color: white; background-color: red;">Don't bother</option>
-                                                    <option style="background-color: yellow;">Give it a shot</option>
-                                                    <option style="color: white; background-color: green;">Plenty of parking</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1">
-                                            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-send"></span></button>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div id="success" style="display:none;" class="alert alert-success fade in">
-                                                <a href="#" class="close" data-dismiss="alert">&times;</a>
-                                                <strong>Success!</strong> Thank you for reporting.
-                                            </div>
-                                            <div id="failure" style="display:none;" class="alert alert-danger fade in">
-                                                <a href="#" class="close" data-dismiss="alert">&times;</a>
-                                                <strong>Oops!</strong> Available Spaces is Empty.
-                                            </div>
+                            <form action="provider.php" onsubmit="return validate()" method="get">
+                                <input type="hidden" name="garage" value="North"/>
+                                <input type="hidden" id="floor" name="floor" value="1">
+                                <input type="hidden" id="spaces" name="spaces" value="Don't bother">
+
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">Floor:</span>
+                                            <select class="form-control selectpicker" id="floor_dropdown" data-mobile="true">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                            </select>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">Available Spaces:</span>
+                                            <select class="form-control selectpicker" id="available_spaces_dropdown" data-mobile="true">
+                                                <option> </option>
+                                                <option style="color: white; background-color: red;">Don't bother</option>
+                                                <option style="background-color: yellow;">Give it a shot</option>
+                                                <option style="color: white; background-color: green;">Plenty of parking</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-send"></span></button>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div id="success" style="display:none;" class="alert alert-success fade in">
+                                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                            <strong>Success!</strong>
+                                        </div>
+                                        <div id="failure" style="display:none;" class="alert alert-danger fade in">
+											<a href="#" class="close" data-dismiss="alert">&times;</a>
+											<strong>Oops!</strong> Available Spaces is Empty.
+										</div>
+                                    </div>
+                                </div>
+                            </form>
                             <h4>Floor Status:</h4>
                             <div>
-                                <p>Floor 1:  <span id="north1"></span> </p>
-                                <p>Floor 2:  <span id="north2"></span> </p>
-                                <p>Floor 3:  <span id="north3"></span> </p>
-                                <p>Floor 4:  <span id="north4"></span> </p>
-                                <p>Floor 5:  <span id="north5"></span> </p>
-                                <p>Floor 6:  <span id="north6"></span> </p>
+                                <p>Floor 1: <span id="north1"></span> </p>
+                                <p>Floor 2: <span id="north2"></span> </p>
+                                <p>Floor 3: <span id="north3"></span> </p>
+                                <p>Floor 4: <span id="north4"></span> </p>
+                                <p>Floor 5: <span id="north5"></span> </p>
+                                <p>Floor 6: <span id="north6"></span> </p>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!--West-->
                 <div class="panel panel-default">
                     <a href="http://www.sjsu.edu/parking/maps/garages/"><span class="btn btn-primary glyphicon glyphicon-chevron-right pull-right"></span></a>
-                    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse2"  data-target="#collapse2">
                         <h4 class="panel-title">West Garage</h4>
                     </div>
                     <div id="collapse2" class="panel-collapse collapse">
                         <div class="panel-body">
-                            <a href="https://www.google.com/maps/dir/current+location/SJSU+West+Garage">Get Directions</a>
+                            <h3><a href="https://www.google.com/maps/dir/current+location/SJSU+West+Garage">
+                                <span class="glyphicon glyphicon-map-marker"></span> Get Directions</a>
+                            </h3>
                             <h4>Report Available Space:</h4>
-                            <div class="spinners">
-                                <form action="provider.php" method="get">
-                                    <input type="hidden" name="garage" value="West"/>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">Floor:</span>
-                                                <select class="form-control selectpicker" data-mobile="true" name="floor">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">Available Spaces:</span>
-                                                <select class="form-control selectpicker" data-mobile="true" name="spaces">
-                                                    <option> </option>
-                                                    <option style="color: white; background-color: red;">Don't bother</option>
-                                                    <option style="background-color: yellow;">Give it a shot</option>
-                                                    <option style="color: white; background-color: green;">Plenty of parking</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <button type="submit" type="button" class="btn btn-primary">Submit</button>
+                            <form action="provider.php" onsubmit="return validateWest()" method="get">
+                                <input type="hidden" name="garage" value="West"/>
+                                <input type="hidden" name="floor" value="1">
+                                <input type="hidden" name="spaces" value="Don't bother">
+
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">Floor:</span>
+                                            <select class="form-control selectpicker" id="floor_dropdown_west" data-mobile="true">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">Available Spaces:</span>
+                                            <select class="form-control selectpicker" id="available_spaces_dropdown_west" data-mobile="true">
+                                                <option> </option>
+                                                <option style="color: white; background-color: red;">Don't bother</option>
+                                                <option style="background-color: yellow;">Give it a shot</option>
+                                                <option style="color: white; background-color: green;">Plenty of parking</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-send"></span></button>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div id="successWest" style="display:none;" class="alert alert-success fade in">
+                                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                            <strong>Success!</strong>
+                                        </div>
+                                        <div id="failureWest" style="display:none;" class="alert alert-danger fade in">
+                                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                            <strong>Oops!</strong> Available Spaces is Empty.
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                             <h4>Floor Status:</h4>
                             <div>
-                                <p>Floor 1:  <span id="west1"></span> </p>
-                                <p>Floor 2:  <span id="west2"></span> </p>
-                                <p>Floor 3:  <span id="west3"></span> </p>
-                                <p>Floor 4:  <span id="west4"></span> </p>
-                                <p>Floor 5:  <span id="west5"></span> </p>
+                                <p>Floor 1: <span id="west1"></span> </p>
+                                <p>Floor 2: <span id="west2"></span> </p>
+                                <p>Floor 3: <span id="west3"></span> </p>
+                                <p>Floor 4: <span id="west4"></span> </p>
+                                <p>Floor 5: <span id="west5"></span> </p>
                             </div>
                         </div>
                     </div>
                 </div>
+                <!--South-->
                 <div class="panel panel-default">
                     <a href="http://www.sjsu.edu/parking/maps/garages/"><span class="btn btn-primary glyphicon glyphicon-chevron-right pull-right"></span></a>
-                    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                    <div class="panel-heading" data-toggle="collapse" data-parent="#accordion" href="#collapse3"  data-target="#collapse3">
                         <h4 class="panel-title">South Garage</h4>
                     </div>
                     <div id="collapse3" class="panel-collapse collapse">
                         <div class="panel-body">
-                            <a href="https://www.google.com/maps/dir/current+location/SJSU+South+Garage">Get Directions</a>
+                            <h3><a href="https://www.google.com/maps/dir/current+location/SJSU+South+Garage">
+                                <span class="glyphicon glyphicon-map-marker"></span> Get Directions</a>
+                            </h3>
                             <h4>Report Available Space:</h4>
-                            <div class="spinners">
-                                <form action="provider.php" method="get">
-                                    <input type="hidden" name="garage" value="South"/>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">Floor:</span>
-                                                <select class="form-control selectpicker" data-mobile="true" name="floor">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">Available Spaces:</span>
-                                                <select class="form-control selectpicker" data-mobile="true" name="spaces">
-                                                    <option> </option>
-                                                    <option style="color: white; background-color: red;">Don't bother</option>
-                                                    <option style="background-color: yellow;">Give it a shot</option>
-                                                    <option style="color: white; background-color: green;">Plenty of parking</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <button type="submit" type="button" class="btn btn-primary">Submit</button>
+                            <form action="provider.php" onsubmit="return validateSouth()" method="get">
+                                <input type="hidden" name="garage" value="South"/>
+                                <input type="hidden" name="floor" value="1">
+                                <input type="hidden" name="spaces" value="Don't bother">
+
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">Floor:</span>
+                                            <select class="form-control selectpicker" id="floor_dropdown_south" data-mobile="true">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                            </select>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
+                                    <div class="col-md-4">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">Available Spaces:</span>
+                                            <select class="form-control selectpicker" id="available_spaces_dropdown_south" data-mobile="true">
+                                                <option> </option>
+                                                <option style="color: white; background-color: red;">Don't bother</option>
+                                                <option style="background-color: yellow;">Give it a shot</option>
+                                                <option style="color: white; background-color: green;">Plenty of parking</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-send"></span></button>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div id="successSouth" style="display:none;" class="alert alert-success fade in">
+                                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                            <strong>Success!</strong>
+                                        </div>
+                                        <div id="failureSouth" style="display:none;" class="alert alert-danger fade in">
+                                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                            <strong>Oops!</strong> Available Spaces is Empty.
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                             <h4>Floor Status:</h4>
                             <div>
-                                <p>Floor 1:  <span id="south1"></span> </p>
-                                <p>Floor 2:  <span id="south2"></span> </p>
-                                <p>Floor 3:  <span id="south3"></span> </p>
-                                <p>Floor 4:  <span id="south4"></span> </p>
-                                <p>Floor 5:  <span id="south5"></span> </p>
+                                <p>Floor 1: <span id="south1"></span> </p>
+                                <p>Floor 2: <span id="south2"></span> </p>
+                                <p>Floor 3: <span id="south3"></span> </p>
+                                <p>Floor 4: <span id="south4"></span> </p>
+                                <p>Floor 5: <span id="south5"></span> </p>
                             </div>
                         </div>
                     </div>

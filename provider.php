@@ -10,7 +10,7 @@
     try{    
         // Connect to the database.
         $con = new PDO("mysql:host=localhost;dbname=SJSU_Parking",
-                           "root", "myfirstDB");
+                           "root", "pass");
         $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $query = "INSERT INTO Report (userID, garage, floor, spaces) ".
@@ -21,14 +21,10 @@
         $ps->bindParam(':availableSpaces', $availableSpaces);
         
         if($ps->execute() === TRUE){
-            $message = "Thank you for your report!";            
-            echo "<script>setTimeout(\"location.href = 'http://localhost/cs174/SJSUParkingApp/index.html';\",0);</script>";                  
-            echo "<script  type='text/javascript' > 
-                        alert('$message');
-                </script>";
+          
+            echo "<script>setTimeout(\"location.href = 'http://localhost/SJSUParkingApp/index.html';\",0);</script>";                  
+
             exit();
-            //header("Location: http://localhost/cs174/SJSUParkingApp/index.html");
-            //exit();
         }else
             echo "Error: " . $sql . "<br>" . $con->error;
     }
